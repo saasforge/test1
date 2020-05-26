@@ -1,0 +1,23 @@
+canvas {
+    /*width: 1000px;
+    height: 500px;*/
+    background-color: #ebeef0;
+}
+.canvas-container {
+    margin-top: 10px;
+    overflow: auto;
+    background-color: #ebeef0;
+    min-height: 200px;
+}
+.block-round {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 8px
+}
+.block-start {
+    background-color: #207edb;
+}
+.block-finish {
+    background-color: #dd8613;
+}
