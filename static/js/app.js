@@ -153,6 +153,9 @@ Vue.component('canvasa',{
             this.context.beginPath();
             this.context.arc(x, y, size, 0, 2 * Math.PI);
             this.context.fill();
+            this.context.lineWidth = 1;
+            this.context.strokeStyle = '#000';
+            this.context.stroke();
         },
         drawPath: function(){
             var self = this;
@@ -174,15 +177,18 @@ Vue.component('canvasa',{
                     if (!alreadyExists.length){
                         this.multiplePoints.push([pointOriginal[0], pointOriginal[1]]);
                     }
-                    this.drawPoint('#e64c33', this.path[i][0] + this.offsets[0], this.path[i][1] + this.offsets[1], 2);
                 }
                 
             }
             // Put start and finish points
             this.drawPoint('#207edb', this.path[0][0] + this.offsets[0], this.path[0][1] + this.offsets[1], 5);
-            this.drawPoint('#dd8613', this.path[this.path.length - 1][0] + this.offsets[0], this.path[this.path.length - 1][1] + this.offsets[1], 5);
+            this.drawPoint('#ddcd13', this.path[this.path.length - 1][0] + this.offsets[0], this.path[this.path.length - 1][1] + this.offsets[1], 5);
             
-            // Update multiple been points
+            // Draw small multiple visits points
+            for (var i = 0; i < this.multiplePoints.length; i++){
+                this.drawPoint('#e64c33', this.multiplePoints[i][0] * this.step + this.offsets[0], 
+                                          this.multiplePoints[i][1] * this.step + this.offsets[1], 2);
+            }
         }, 
         runUnitTests: function(){
             // Simple unit test 1
