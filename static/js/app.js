@@ -29,7 +29,7 @@ Vue.component('canvasa',{
         </div>
         <div class="col-md-3">
             <h4>Points visited more than once:</h4>
-            <div>
+            <div class="block-stats">
                 <ul>
                     <li v-for="point in multiplePoints" :key="point.toString()">
                     {{point[0]}}, {{point[1]}}
