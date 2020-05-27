@@ -61,6 +61,7 @@ Vue.component('canvasa',{
     },
     methods: {
         loadData: function(event){
+            this.info = 'Please wait until data is loaded...';
             var file = event.target.files[0];
             var reader = new FileReader();
             var self = this;
@@ -69,13 +70,16 @@ Vue.component('canvasa',{
             this.multiplePoints = [];
             this.offsets = [];
             this.stringPath = '';
-            this.info = 'Please wait until data is loaded...';
-      
+
             reader.onload = function(e){
-                self.route = e.target.result;
-                self.calculateTurtlePath();
-                self.drawPath();
-                self.info = 'Loaded all data!';
+                // We have to set timeout to give the Vue js rerender the information line
+                setTimeout(function(){
+                    self.route = e.target.result;
+                    self.calculateTurtlePath();
+                    self.drawPath();
+                    self.info = 'Loaded all data!';
+                }, 400);
+                
             };
             reader.readAsText(file);
         },
